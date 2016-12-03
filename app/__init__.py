@@ -8,10 +8,16 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from flask_uuid import FlaskUUID
 
+from flask_httpauth import HTTPBasicAuth
+
+
 app = Flask(__name__)
 FlaskUUID(app)
+auth = HTTPBasicAuth()
 
 app.config.from_object('config')
+
+config = app.config
 db = SQLAlchemy(app)
 
 from models import Users
